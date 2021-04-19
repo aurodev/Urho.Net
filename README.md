@@ -40,8 +40,8 @@ https://github.com/Urho-Net/Samples
 
 ## <u> Urho.Net uses the following third-party libraries: </u>
 
-- Urho3D game engine, Special customized version , this is the main development link of this framework 
-- It contains the entire source code , tools and scripts that allow proper development of this C# Multiplatform game framework.\
+- Urho3D game engine, Special customized version , this is the main development link of this framework. \
+  It contains the entire source code , tools and scripts that allow proper development of this C# Multiplatform game framework.\
   https://github.com/elix22/Urho3D/tree/dotnet
 
 - ReferenceAssemblyResolver , written from scratch, tool that resolves all the reference assembly dependencies that are part of the main Game.dll\
