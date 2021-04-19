@@ -2,7 +2,7 @@
 Multi-Platform C# Game development framework based upon the Urho3D game engine .\
 Currently supports :  Windows , Linux , OSX , iOS and Android . 
 
-First class Visual Studio Code support as the main IDE on all 3 major platforms , Windows , OSX and Linux .
+First class Visual Studio Code support as the main IDE on all 3 major platforms , Windows , MacOS and Linux .
 
 # <u> Common Dependencies </u>
 - **Visual Studio Code** \
