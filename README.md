@@ -36,7 +36,7 @@ First class Visual Studio Code support as the main IDE on all 3 major platforms 
   - https://youtu.be/ElMs_jkcLxo
 
 # Samples 
-https://github.com/elix22/Urho.Net-Samples
+https://github.com/Urho-Net/Samples
 
 ## <u> Urho.Net uses the following third-party libraries: </u>
 
