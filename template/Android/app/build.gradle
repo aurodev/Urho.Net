@@ -53,6 +53,7 @@ task copyDotNetAssets(type: Copy) {
     println "I'm copyDotNetAssets task!"
     from("../../libs/dotnet/urho/mobile") {
         include "android/UrhoDotNet.dll"
+        include "android/Mono.Android.dll"
     }
     into "src/main/assets/Data/DotNet"
 }
