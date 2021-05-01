@@ -78,4 +78,4 @@ else
 	echo "Urho.Net configuration failure!"
 fi
 
-read -p "getk: " getk
+# read -p "getk: " getk
