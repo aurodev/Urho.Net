@@ -22363,6 +22363,21 @@
              Return event receivers for an event type, or null if they do not exist.
              </summary>
             </member>
+        <member name="M:Urho.Context.RegisterPlugin(Urho.Plugin)">
+             <summary>
+             Register a subsystem.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.RemovePlugin(Urho.StringHash)">
+             <summary>
+             Remove a subsystem.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.GetPlugin(Urho.StringHash)">
+             <summary>
+             Return subsystem by type.
+             </summary>
+            </member>
         <member name="P:Urho.Context.EventSender">
              <summary>
              Return active event sender. Null outside event handling.
@@ -33754,6 +33769,11 @@
         <member name="T:Urho.PassLightingMode">
              <summary>
              Lighting mode of a pass.
+             </summary>
+            </member>
+        <member name="T:Urho.Plugin">
+             <summary>
+             Construct.
              </summary>
             </member>
         <member name="T:Urho.PrimitiveType">

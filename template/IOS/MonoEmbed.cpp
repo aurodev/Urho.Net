@@ -70,8 +70,10 @@
 #include "macos/macos_support.h"
 #endif
 
+
 using namespace Urho3D;
 
+void RegisterPlugins(Context * context);
 
 static void main_function(Urho3D::Context * context,MonoDomain* domain, const char* file, int argc, char** argv)
 {
@@ -98,6 +100,7 @@ int start_urho_mono_main(Platform platform) {
   
     urho3d_init_mono(context);
 
+    RegisterPlugins(context);
  
 #if defined(WIN32)
     SetCurrentDirectory("D:\\Urho3D-Dev\\DotNet\\Urho3D\\build_vs2019\\bin");

@@ -21,6 +21,8 @@
 # THE SOFTWARE.
 #
 
+. ../script/project_vars.sh
+
 export URHO3D_HOME=$(pwd)
 export LOCAL_MONO_PATH=${URHO3D_HOME}/../libs/dotnet/bcl/ios
 export URHO3D_DLL_PATH=${URHO3D_HOME}/../libs/dotnet/urho/mobile/ios
@@ -39,6 +41,7 @@ export C_SHARP_SOURCE_CODE='../../Program.cs  -recurse:'../../Source/*.cs''
 export INTERMEDIATE_FOLDER=intermediate
 IOS_AOT_MODULES_HEADER=${URHO3D_HOME}/ios_aot_modules.h
 IOS_AOT_MODULES_MM=${URHO3D_HOME}/ios_aot_modules.mm
+REGISTER_PLUGINS=${URHO3D_HOME}/register_plugins.cpp
 
 export BUILD_DIR=build
 
@@ -171,7 +174,7 @@ check_ios_env_vars()
 
 
 # check dependencies
-checkdeps brew cmake xcodebuild ios-deploy codesign mcs
+checkdeps brew cmake xcodebuild ios-deploy codesign mcs plutil
 
 if [[ "$RENDERING_BACKEND" == "gles" ]]; then
     mkdir -p ${URHO3D_HOME}/lib
@@ -335,6 +338,32 @@ for i in ${ASSETS_FOLDER_DOTNET_IOS_PATH}/*.dll; do iot_aot_modules_mm_populate 
 iot_aot_modules_mm_populate ${ASSETS_FOLDER_DOTNET_PATH}/Game.dll
 ios_aot_modules_mm_epilog
 
+rm ${REGISTER_PLUGINS}
+touch ${REGISTER_PLUGINS}
+echo "#include \"../Core/Context.h\"" >> ${REGISTER_PLUGINS}
+echo " " >> ${REGISTER_PLUGINS}
+echo "using namespace Urho3D;" >> ${REGISTER_PLUGINS}
+echo " " >> ${REGISTER_PLUGINS}
+for i in "${PLUGINS[@]}"
+    do
+        echo "void Register"${i}"(Context * context);">> ${REGISTER_PLUGINS}
+    done
+echo " " >> ${REGISTER_PLUGINS}
+echo "void RegisterPlugins(Context * context)" >> ${REGISTER_PLUGINS}
+echo "{" >> ${REGISTER_PLUGINS}
+for i in "${PLUGINS[@]}"
+    do
+        echo "  Register"${i}"(context);">> ${REGISTER_PLUGINS}
+    done
+echo "}" >> ${REGISTER_PLUGINS}
+
+# Update Info.plist if needed
+plutil -remove GADIsAdManagerApp  ${URHO3D_HOME}/CMake/Modules/iOSBundleInfo.plist.template
+plutil -remove GADApplicationIdentifier  ${URHO3D_HOME}/CMake/Modules/iOSBundleInfo.plist.template
+if [[ "$GAD_APPLICATION_ID" != "" ]]; then
+plutil -replace GADIsAdManagerApp  -bool 'true' ${URHO3D_HOME}/CMake/Modules/iOSBundleInfo.plist.template
+plutil -replace GADApplicationIdentifier  -string $GAD_APPLICATION_ID ${URHO3D_HOME}/CMake/Modules/iOSBundleInfo.plist.template
+fi
 
 # first run camke
 ${URHO3D_HOME}/script/cmake_ios_dotnet.sh ${BUILD_DIR} -DDEVELOPMENT_TEAM=${DEVELOPMENT_TEAM} -DCODE_SIGN_IDENTITY=${CODE_SIGN_IDENTITY} -DPROVISIONING_PROFILE_SPECIFIER=${PROVISIONING_PROFILE_SPECIFIER}
@@ -346,3 +375,6 @@ if [[ "$DEPLOY" == "launch" ]]; then
     ios-deploy --justlaunch --bundle  ${BUILD_DIR}/bin/${APP_NAME}.app
 fi
 
+if [[ "$DEPLOY" == "debug" ]]; then
+    ios-deploy --debug --bundle  ${BUILD_DIR}/bin/${APP_NAME}.app
+fi

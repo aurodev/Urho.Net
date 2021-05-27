@@ -39,6 +39,7 @@ public:
     /// Destruct.
     ~JSONFile() override;
     /// Register object factory.
+    /// @nobind
     static void RegisterObject(Context* context);
 
     /// Load resource from stream. May be called from a worker thread. Return true if successful.
@@ -52,8 +53,24 @@ public:
     bool FromString(const String& source);
     /// Save to a string.
     String ToString(const String& indendation = "\t") const;
+    
+    String GetString(const String& key);
+    int GetInt(const String& key);
+    unsigned int GetUInt(const String& key);
+    float GetFloat(const String& key);
+    double GetDouble(const String&  key);
+    bool GetBool(const String& key);
 
+    
+    void SetString(const String& key , const String& val);
+    void SetInt(const String& key,int val);
+    void SetUInt(const String& key,unsigned int val);
+    void SetFloat(const String& key,float val);
+    void SetDouble(const String&  key,double val);
+    void SetBool(const String& key,bool val);
+    
     /// Return root value.
+    /// @property
     JSONValue& GetRoot() { return root_; }
     /// Return root value.
     const JSONValue& GetRoot() const { return root_; }
@@ -61,6 +78,80 @@ public:
 private:
     /// JSON root value.
     JSONValue root_;
+};
+
+
+
+class URHO3D_API JsonBuilder : public Object
+{
+    URHO3D_OBJECT(JsonBuilder, Object);
+
+public:
+    JSONFile *f;
+
+    JSONFile & F() {
+        return *f;
+    }
+    
+    JSONFile & data() {
+        return *f;
+    }
+
+    JsonBuilder(Context* context)
+        : Object(context)
+    {
+        f = new JSONFile(context);
+    }
+
+    ~JsonBuilder() 
+    {
+        delete f;
+    }
+
+    JsonBuilder& operator()(const String& key, int v)
+    {
+        f->GetRoot()[key] = v;
+        return *this;
+    }
+
+    JsonBuilder& operator()(const String& key, const String& v)
+    {
+        f->GetRoot()[key] = v;
+        return *this;
+    }
+
+    JsonBuilder& operator()(const String& key, const char * v)
+    {
+        f->GetRoot()[key] = v;
+        return *this;
+    }
+
+  
+    JsonBuilder& operator()(const String& key, bool v)
+    {
+         f->GetRoot()[key] = v;
+        return *this;
+    }
+
+    JsonBuilder& operator()(const String& key, StringVector & v)
+    {
+        JSONValue & root = f->GetRoot();
+        JSONValue var;
+        if (v.Size() == 0)
+        {
+            var.Push(JSONValue());
+            var.Pop();
+        }
+        else
+        {
+            for (unsigned int k = 0; k < v.Size(); k++)
+                var.Push(JSONValue(v[k]));
+        }
+        root[key] = var;
+        return * this;
+    }
+    
+
 };
 
 }
