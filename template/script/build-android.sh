@@ -95,14 +95,14 @@ else
         mkdir "-p" "Android/app/src/test/${JAVA_PACKAGE_PATH}"
 
         mv "Android/app/src/main/MainActivity.kt" "Android/app/src/main/${JAVA_PACKAGE_PATH}"
-        mv "Android/app/src/main/UrhoStartActivity.kt" "Android/app/src/main/${JAVA_PACKAGE_PATH}"
+        mv "Android/app/src/main/UrhoMainActivity.kt" "Android/app/src/main/${JAVA_PACKAGE_PATH}"
         mv "Android/app/src/androidTest/ExampleInstrumentedTest.kt" "Android/app/src/androidTest/${JAVA_PACKAGE_PATH}"
         mv "Android/app/src/test/ExampleUnitTest.kt" "Android/app/src/test/${JAVA_PACKAGE_PATH}"
 
         aliassedinplace "s*TEMPLATE_UUID*$PROJECT_UUID*g" "Android/app/src/main/AndroidManifest.xml"
         aliassedinplace "s*TEMPLATE_UUID*$PROJECT_UUID*g" "Android/app/build.gradle"
         aliassedinplace "s*TEMPLATE_UUID*$PROJECT_UUID*g" "Android/app/src/main/${JAVA_PACKAGE_PATH}/MainActivity.kt"
-        aliassedinplace "s*TEMPLATE_UUID*$PROJECT_UUID*g" "Android/app/src/main/${JAVA_PACKAGE_PATH}/UrhoStartActivity.kt"
+        aliassedinplace "s*TEMPLATE_UUID*$PROJECT_UUID*g" "Android/app/src/main/${JAVA_PACKAGE_PATH}/UrhoMainActivity.kt"
 
         aliassedinplace "s*TEMPLATE_UUID*$PROJECT_UUID*g" "Android/app/src/androidTest/${JAVA_PACKAGE_PATH}/ExampleInstrumentedTest.kt"
         aliassedinplace "s*TEMPLATE_UUID*$PROJECT_UUID*g" "Android/app/src/test/${JAVA_PACKAGE_PATH}/ExampleUnitTest.kt"
