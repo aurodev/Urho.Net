@@ -21,7 +21,9 @@
 # THE SOFTWARE.
 #
 
-ANDROID_APP_UUID=TEMPLATE_PROJECT_UUID
+. script/project_vars.sh
+
+ANDROID_APP_UUID=${PROJECT_UUID}
 
 while getopts b:d:g:k:i:o:n: option
 do
@@ -84,9 +86,8 @@ else
         cp "-r"  ${URHONET_HOME_ROOT}/template/libs/dotnet/urho//mobile/android/*  libs/dotnet/urho//mobile/android/
     fi
 
-    # if [ ! -d Android ] ; then
+    if [ ! -d Android ] ; then
         verify_dir_exist_or_exit "${URHONET_HOME_ROOT}/template/Android" 
-        . script/project_vars.sh
 
         cp "-r" "${URHONET_HOME_ROOT}/template/Android" .
         mkdir "-p" "Android/app/src/main/${JAVA_PACKAGE_PATH}"
@@ -108,8 +109,35 @@ else
 
         aliassedinplace "s*TEMPLATE_PROJECT_NAME*$PROJECT_NAME*g" "Android/settings.gradle"
         aliassedinplace "s*TEMPLATE_PROJECT_NAME*$PROJECT_NAME*g" "Android/app/src/main/res/values/strings.xml"
-    # fi
+        
+        #Create AndroidManifest.xml based upon the project configuration variables in project_vars.sh
+        ./script/create-android-manifest.sh
 
+        if [ -n "$PLUGINS" ] ; then
+            rm "${CWD}/Assets/Data/plugins.cfg"
+            touch "${CWD}/Assets/Data/plugins.cfg"
+            mkdir "-p" "Android/app/src/main/java/com/urho3d/plugin"
+            for i in "${PLUGINS[@]}"
+            do
+                verify_dir_exist_or_exit "${URHONET_HOME_ROOT}/template/Plugins/${i}/android"
+                cp -R ${URHONET_HOME_ROOT}/template/Plugins/${i}/android/java/ "Android/app/src/main/java/com/urho3d/plugin/${i}"
+                cp -R ${URHONET_HOME_ROOT}/template/Plugins/${i}/android/lib/ "Android/app/src/main/jniLibs"
+
+                echo ${i} >> "${CWD}/Assets/Data/plugins.cfg"
+            done
+        fi
+
+        if [ -n "$ANDROID_DEPENDENCIES" ] ; then
+            echo " " >> "Android/app/build.gradle"
+            echo " " >> "Android/app/build.gradle"
+            echo "dependencies {" >> "Android/app/build.gradle"
+            for i in "${ANDROID_DEPENDENCIES[@]}"
+            do
+                echo "implementation ('${i}')" >> "Android/app/build.gradle"
+            done
+            echo "}" >> "Android/app/build.gradle"
+        fi
+    fi
 fi
 
 if [[ "$BUILD" == "debug" ]]; then

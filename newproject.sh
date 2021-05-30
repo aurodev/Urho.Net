@@ -167,7 +167,6 @@ aliassedinplace "s*TEMPLATE_PROJECT_UUID*$uuid*g" "$projPath/script/project_vars
 aliassedinplace "s*TEMPLATE_PROJECT_NAME*$projName*g" "$projPath/script/project_vars.sh"
 aliassedinplace "s*TEMPLATE_JAVA_PACKAGE_PATH*$java_package_path*g" "$projPath/script/project_vars.sh"
 
-aliassedinplace "s*TEMPLATE_PROJECT_UUID*$uuid*g" "$projPath/script/build-android.sh"
 
 cp "-r" "template/Assets" "$projPath"
 cp "-r" "template/include" "$projPath"
