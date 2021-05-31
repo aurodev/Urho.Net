@@ -87,7 +87,7 @@ className=${projName}
 
 
 echo
-echo "3. Enter a unique identifier for your project."
+echo "2. Enter a unique identifier for your project."
 echo
 echo "   This should be a human readable package name,"
 echo "   containing at least two words separated by a"
@@ -121,7 +121,7 @@ java_package_path=`echo "java/$java_package_path"`
 
 
 echo
-echo "5. Enter the project path."
+echo "3. Enter the project path."
 echo
 echo "   This can be a relative path, absolute path,"
 echo "   or empty for the current folder. Note that"

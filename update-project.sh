@@ -22,7 +22,11 @@
 
 PROJECT_PATH=$1
 
+
 if [ -n "$PROJECT_PATH" ] ; then
+    if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
+        PROJECT_PATH=$(cygpath -m ${PROJECT_PATH})
+    fi
     echo $PROJECT_PATH
     if [ ! -d $PROJECT_PATH ] ; then
         echo "$PROJECT_PATH does not exist"
