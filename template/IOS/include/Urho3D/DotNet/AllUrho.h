@@ -172,10 +172,13 @@
 #include "../Network/Protocol.h"
 #include "../Physics/CollisionShape.h"
 #include "../Physics/Constraint.h"
+#include "../Physics/CustomRaycastVehicle.h"
+#include "../Physics/KinematicCharacterController.h"
 #include "../Physics/PhysicsEvents.h"
 #include "../Physics/PhysicsUtils.h"
 #include "../Physics/PhysicsWorld.h"
 #include "../Physics/RigidBody.h"
+#include "../Physics/RaycastVehicle.h"
 #include "../Resource/BackgroundLoader.h"
 #include "../Resource/Decompress.h"
 #include "../Resource/Image.h"
@@ -270,7 +273,15 @@
 #include "../Urho2D/TileMapLayer2D.h"
 #include "../Urho2D/TmxFile2D.h"
 #include "../Urho2D/Urho2D.h"
+#include "../IK/IK.h"
+#include "../IK/IKConstraint.h"
+#include "../IK/IKConverters.h"
+#include "../IK/IKEffector.h"
+#include "../IK/IKEvents.h"
+#include "../IK/IKSolver.h"
+#if defined(URHO3D_DOTNET)
 #include "Mono.h"
+#endif
 
 // Workaround Windows defining these
 #undef GetObject

@@ -13,8 +13,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun launch(argument: String?) {
         if (argument != null) {
-            val intent = Intent(this, UrhoStartActivity::class.java)
-            intent.putExtra(UrhoStartActivity.argument,argument)
+            val intent = Intent(this, UrhoMainActivity::class.java)
+            intent.putExtra(UrhoMainActivity.argument,argument)
             startActivity(intent)
             finish()
         }

@@ -23,18 +23,6 @@
 #ifndef URHO3D_API_H
 #define URHO3D_API_H
 
-/* #undef URHO3D_STATIC_DEFINE */
-#define URHO3D_OPENGL
-/* #undef URHO3D_D3D11 */
-/* #undef URHO3D_SSE */
-/* #undef URHO3D_DATABASE_ODBC */
-/* #undef URHO3D_DATABASE_SQLITE */
-/* #undef URHO3D_LUAJIT */
-/* #undef URHO3D_TESTING */
-#define URHO3D_DOTNET
-
-/* #undef CLANG_PRE_STANDARD */
-
 #ifdef URHO3D_STATIC_DEFINE
 #  define URHO3D_API
 #  define URHO3D_NO_EXPORT
@@ -74,4 +62,16 @@
 
 #define NONSCRIPTABLE 
 
+#define URHO3D_OPENGL
+
+#ifdef __APPLE__
+#include "TargetConditionals.h"
+#if defined(TARGET_OS_OSX) && defined(TARGET_CPU_ARM64)
+#define APPLE_SILICON
 #endif
+#if defined(APPLE_SILICON) && defined(URHO3D_SSE)
+#undef URHO3D_SSE
+#endif
+#endif
+
+#endif /* URHO3D_API_H */

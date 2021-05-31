@@ -27,6 +27,21 @@
 #if defined(URHO3D_ANGELSCRIPT)
 #include <Urho3D/AngelScript/APITemplates.h>
 #include <Urho3D/AngelScript/Addons.h>
+#include <Urho3D/AngelScript/GeneratedIncludes.h>
+#include <Urho3D/AngelScript/Generated_Templates.h>
+#include <Urho3D/AngelScript/Manual.h>
+#include <Urho3D/AngelScript/Manual_Core.h>
+#include <Urho3D/AngelScript/Manual_Graphics.h>
+#include <Urho3D/AngelScript/Manual_IO.h>
+#include <Urho3D/AngelScript/Manual_Input.h>
+#include <Urho3D/AngelScript/Manual_Math.h>
+#include <Urho3D/AngelScript/Manual_Navigation.h>
+#include <Urho3D/AngelScript/Manual_Network.h>
+#include <Urho3D/AngelScript/Manual_Physics.h>
+#include <Urho3D/AngelScript/Manual_Resource.h>
+#include <Urho3D/AngelScript/Manual_Scene.h>
+#include <Urho3D/AngelScript/Manual_UI.h>
+#include <Urho3D/AngelScript/Manual_Urho2D.h>
 #include <Urho3D/AngelScript/Script.h>
 #include <Urho3D/AngelScript/ScriptAPI.h>
 #include <Urho3D/AngelScript/ScriptEventListener.h>
@@ -73,6 +88,7 @@
 #include <Urho3D/Core/MiniDump.h>
 #include <Urho3D/Core/Mutex.h>
 #include <Urho3D/Core/Object.h>
+#include <Urho3D/Core/Plugin.h>
 #include <Urho3D/Core/ProcessUtils.h>
 #include <Urho3D/Core/Profiler.h>
 #include <Urho3D/Core/Spline.h>
@@ -234,6 +250,7 @@
 #include <Urho3D/Physics/CollisionShape.h>
 #include <Urho3D/Physics/Constraint.h>
 #include <Urho3D/Physics/CustomRaycastVehicle.h>
+#include <Urho3D/Physics/KinematicCharacterController.h>
 #include <Urho3D/Physics/PhysicsEvents.h>
 #include <Urho3D/Physics/PhysicsUtils.h>
 #include <Urho3D/Physics/PhysicsWorld.h>

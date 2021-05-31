@@ -28,6 +28,20 @@
             "problemMatcher": []
         },
         {
+            "label": "ios-debug",
+            "command": "./script/build-ios.sh",
+            "type": "shell",
+            "args": [
+                "-d",
+                "debug",
+                "-t",
+                "${input:DeveloperID}",
+                "-r",
+                "gles"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "ios-build-metal",
             "command": "./script/build-ios.sh",
             "type": "shell",
@@ -46,6 +60,20 @@
             "args": [
                 "-d",
                 "launch",
+                "-t",
+                "${input:DeveloperID}",
+                "-r",
+                "metal"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "ios-debug-metal",
+            "command": "./script/build-ios.sh",
+            "type": "shell",
+            "args": [
+                "-d",
+                "debug",
                 "-t",
                 "${input:DeveloperID}",
                 "-r",

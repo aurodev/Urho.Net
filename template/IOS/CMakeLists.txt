@@ -69,16 +69,22 @@ endif()
 
 link_directories(. ${MONO_LIBPATH})
 
-set (INCLUDE_DIRS ${INCLUDE_DIRS} ../include)
+set (INCLUDE_DIRS ${INCLUDE_DIRS} ../include Plugins)
 
-
+file(GLOB_RECURSE cmakeFiles ${CMAKE_SOURCE_DIR}/Plugins/CMakeLists.txt)
+foreach(cmakeFile ${cmakeFiles})
+    message("INCLUDE ${cmakeFile}")
+    include(${cmakeFile})
+endforeach(cmakeFile)
 
 # Define source files
-define_source_files (EXTRA_H_FILES ${COMMON_SAMPLE_H_FILES} ${S_FILES} ${EXTRA_MM_FILES} ${MACOS_FILES})
+define_source_files (EXTRA_H_FILES ${COMMON_SAMPLE_H_FILES} ${S_FILES} ${EXTRA_MM_FILES} ${MACOS_FILES} ${PLUGIN_FILES})
 
 # Setup target with resource copying
 setup_main_executable ()
 
+
+set_property (TARGET ${TARGET_NAME} PROPERTY XCODE_ATTRIBUTE_FRAMEWORK_SEARCH_PATHS ${FRAMEWORK_SEARCH_PATHS})
 set_target_properties(${TARGET_NAME} PROPERTIES XCODE_ATTRIBUTE_DEVELOPMENT_TEAM ${DEVELOPMENT_TEAM})
 set_property (TARGET ${TARGET_NAME} PROPERTY XCODE_ATTRIBUTE_CODE_SIGN_IDENTITY  ${CODE_SIGN_IDENTITY})
 set_property (TARGET ${TARGET_NAME} PROPERTY XCODE_ATTRIBUTE_PROVISIONING_PROFILE_SPECIFIER  ${PROVISIONING_PROFILE_SPECIFIER})
