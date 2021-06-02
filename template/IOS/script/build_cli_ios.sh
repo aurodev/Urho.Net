@@ -249,11 +249,8 @@ aliassedinplace "s*T_DEVELOPER_ID*$DEVELOPMENT_TEAM*g" "ios.entitlements"
 aliassedinplace "s*T_UUID*$UUID*g" "ios.entitlements"
 
 
-copy_file ${URHO3D_DLL_PATH} UrhoDotNet.dll .
-
-
 rm Game.dll
-mcs  /target:exe /out:Game.dll /reference:UrhoDotNet.dll /platform:x64 ${C_SHARP_SOURCE_CODE}
+mcs  /target:exe /out:Game.dll  -lib:${URHO3D_DLL_PATH},${LOCAL_MONO_PATH},${LOCAL_MONO_PATH}/Facades /reference:UrhoDotNet.dll /reference:netstandard.dll /platform:x64 ${C_SHARP_SOURCE_CODE}
 if [ -f ./Game.dll ] ; then
     mkdir -p ${ASSETS_FOLDER_DOTNET_PATH}
     cp Game.dll ${ASSETS_FOLDER_DOTNET_PATH}
