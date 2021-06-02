@@ -248,9 +248,22 @@ cp ../script/ios.entitlements .
 aliassedinplace "s*T_DEVELOPER_ID*$DEVELOPMENT_TEAM*g" "ios.entitlements"
 aliassedinplace "s*T_UUID*$UUID*g" "ios.entitlements"
 
+DLL_REFERENCES=''
+if [ -n "$DOTNET_REFERENCE_DLL" ] ; then
+    for i in "${DOTNET_REFERENCE_DLL[@]}"
+    do
+        echo "${URHO3D_DLL_PATH}/${i}"
+        if [ -f ${URHO3D_DLL_PATH}/${i} ]; then
+            DLL_REFERENCES="${DLL_REFERENCES} /reference:${i}"
+        else 
+            echo "${i} not found !!"
+            exit -1
+        fi
+    done
+fi  
 
 rm Game.dll
-mcs  /target:exe /out:Game.dll  -lib:${URHO3D_DLL_PATH},${LOCAL_MONO_PATH},${LOCAL_MONO_PATH}/Facades /reference:UrhoDotNet.dll /reference:netstandard.dll /platform:x64 ${C_SHARP_SOURCE_CODE}
+mcs  /target:exe /out:Game.dll  -lib:${URHO3D_DLL_PATH},${LOCAL_MONO_PATH},${LOCAL_MONO_PATH}/Facades /reference:UrhoDotNet.dll /reference:netstandard.dll ${DLL_REFERENCES} /platform:x64 ${C_SHARP_SOURCE_CODE}
 if [ -f ./Game.dll ] ; then
     mkdir -p ${ASSETS_FOLDER_DOTNET_PATH}
     cp Game.dll ${ASSETS_FOLDER_DOTNET_PATH}
