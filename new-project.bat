@@ -72,7 +72,7 @@ echo.
 
 if NOT "%projPath%"=="%projPath: =%" (
     echo ERROR: PATH %projPath%  contains whitespace characters !!
-    echo Make sure that Urho.Net installation path doesn't contain whitespace characters
+    echo Make sure that project  path doesn't contain whitespace characters
     goto done
 )
 
