@@ -70,6 +70,13 @@ if "%location%" == "" (
 )
 echo.
 
+if NOT "%projPath%"=="%projPath: =%" (
+    echo ERROR: PATH %projPath%  contains whitespace characters !!
+    echo Make sure that Urho.Net installation path doesn't contain whitespace characters
+    goto done
+)
+
+
 
 REM Does this path already exist?
 if exist "%projPath%" (
