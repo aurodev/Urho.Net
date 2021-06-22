@@ -260,7 +260,15 @@ if [ -n "$DOTNET_REFERENCE_DLL" ] ; then
             exit -1
         fi
     done
-fi  
+fi
+
+if [ -n "$DOTNET_BCL_REFERENCE" ] ; then
+    for i in "${DOTNET_BCL_REFERENCE[@]}"
+    do
+        echo "adding BCL reference ${i}"
+        DLL_REFERENCES="${DLL_REFERENCES} /reference:${i}"
+    done
+fi 
 
 rm Game.dll
 mcs  /target:exe /out:Game.dll  -lib:${URHO3D_DLL_PATH},${LOCAL_MONO_PATH},${LOCAL_MONO_PATH}/Facades /reference:UrhoDotNet.dll /reference:netstandard.dll ${DLL_REFERENCES} /platform:x64 ${C_SHARP_SOURCE_CODE}
