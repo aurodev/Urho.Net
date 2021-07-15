@@ -226,13 +226,6 @@
 #include <Urho3D/Math/Vector2.h>
 #include <Urho3D/Math/Vector3.h>
 #include <Urho3D/Math/Vector4.h>
-#include <Urho3D/NanoVG/GLHeaders.h>
-#include <Urho3D/NanoVG/NVG.h>
-#include <Urho3D/NanoVG/VGCanvas.h>
-#include <Urho3D/NanoVG/VGComponent.h>
-#include <Urho3D/NanoVG/VGElement.h>
-#include <Urho3D/NanoVG/VGEvents.h>
-#include <Urho3D/NanoVG/VGFrameBuffer.h>
 #if defined(URHO3D_NAVIGATION)
 #include <Urho3D/Navigation/CrowdAgent.h>
 #include <Urho3D/Navigation/CrowdManager.h>
@@ -364,6 +357,14 @@
 #include <Urho3D/Urho2D/Urho2D.h>
 #include <Urho3D/Urho2D/Urho2DEvents.h>
 #endif
+#include <Urho3D/VectorGraphics/GLHeaders.h>
+#include <Urho3D/VectorGraphics/VGCanvas.h>
+#include <Urho3D/VectorGraphics/VGComponent.h>
+#include <Urho3D/VectorGraphics/VGElement.h>
+#include <Urho3D/VectorGraphics/VGEvents.h>
+#include <Urho3D/VectorGraphics/VGFrameBuffer.h>
+#include <Urho3D/VectorGraphics/VGTextRowBuffer.h>
+#include <Urho3D/VectorGraphics/VectorGraphics.h>
 
 #include <Urho3D/DebugNew.h>
 
