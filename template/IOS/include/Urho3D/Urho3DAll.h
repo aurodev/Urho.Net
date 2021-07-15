@@ -357,6 +357,14 @@
 #include <Urho3D/Urho2D/Urho2D.h>
 #include <Urho3D/Urho2D/Urho2DEvents.h>
 #endif
+#include <Urho3D/VectorGraphics/GLHeaders.h>
+#include <Urho3D/VectorGraphics/VGCanvas.h>
+#include <Urho3D/VectorGraphics/VGComponent.h>
+#include <Urho3D/VectorGraphics/VGElement.h>
+#include <Urho3D/VectorGraphics/VGEvents.h>
+#include <Urho3D/VectorGraphics/VGFrameBuffer.h>
+#include <Urho3D/VectorGraphics/VGTextRowBuffer.h>
+#include <Urho3D/VectorGraphics/VectorGraphics.h>
 
 #include <Urho3D/DebugNew.h>
 
