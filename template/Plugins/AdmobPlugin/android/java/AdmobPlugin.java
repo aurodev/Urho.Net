@@ -62,8 +62,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.github.urho3d.UrhoActivity;
-import com.elix22.admob.UrhoMainActivity;
 import org.libsdl.app.SDL;
+
+import TEMPLATE_UUID.UrhoMainActivity;
 
 public class AdmobPlugin
 {
