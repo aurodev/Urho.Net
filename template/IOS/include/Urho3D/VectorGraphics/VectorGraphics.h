@@ -57,7 +57,30 @@ namespace Urho3D
 	class XMLElement;
 	class XMLFile;
 
-	
+
+    typedef struct VGImageData
+    {
+        
+        int ref_count;
+        int image_id;
+        String image_name;
+        
+        VGImageData()
+        {
+            ref_count = 0;
+            image_id = 0;
+            image_name = "";
+        }
+        
+        VGImageData(int id,String name)
+        {
+            ref_count = 1;
+            image_id = id;
+            image_name = name;
+        }
+        
+    }VGImageData;
+
 class URHO3D_API VectorGraphics : public Object
     {
     URHO3D_OBJECT(VectorGraphics, Object);
@@ -176,7 +199,12 @@ public:
     // Creates image by loading it from the specified chunk of memory.
     // Returns handle to the image.
     int CreateImageMem(int imageFlags, unsigned char* data, int ndata);
-
+        
+    int LoadSVGImage(const String& filename,float width,float height, int imageFlags);
+        
+    float GetSVGHeight(const String& filename);
+    float GetSVGWidth(const String& filename);
+    void GetSVGSize(const String& filename , float * height, float * width);
     // Creates image from specified image data.
     // Returns handle to the image.
     int CreateImageRGBA(int w, int h, int imageFlags, const unsigned char* data);
@@ -204,7 +232,7 @@ protected:
 
 private:
     HashMap<String, int> imagesMap_;
-    HashMap<int,String> imagesIDMap_;
+    HashMap<int,VGImageData> imagesIDMap_;
 
     HashMap<String, int> fontsMap_;
     HashMap<int, String> fontsIDMap_;

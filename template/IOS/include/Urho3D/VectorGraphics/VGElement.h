@@ -58,6 +58,8 @@ public:
     /// Destruct.
     ~VGElement() override;
 
+    Texture2D* GetRenderTarget();
+
     /// React to resize.
     void OnResize(const IntVector2& newSize, const IntVector2& delta) override;
 
@@ -591,10 +593,12 @@ protected:
     ShaderVariation* previousVS;
     ShaderVariation* previousPS;
     Color clearColor_;
+    bool isHiddenByParent;
 
 private:
     // Handle render event.
     void HandleRender(StringHash eventType, VariantMap& eventData);
+    void HandleVisibleChanged(StringHash eventType, VariantMap& eventData);
 };
 
 } // namespace Urho3D
