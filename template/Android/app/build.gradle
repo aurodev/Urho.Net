@@ -63,7 +63,7 @@ task dotnetBuildRelease {
     exec {
         println "I'm dotnetBuildRelease task!"
         workingDir '../../'
-        commandLine 'dotnet','build','--configuration','Release'
+        commandLine 'dotnet','build','--configuration','Release','-p:DefineConstants=_MOBILE_'
     }
     
 }
@@ -72,7 +72,7 @@ task dotnetBuildDebug {
     exec {
         println "I'm dotnetBuildDebug task!"
         workingDir '../../'
-        commandLine 'dotnet','build','--configuration','Debug'
+        commandLine 'dotnet','build','--configuration','Debug','-p:DefineConstants=_MOBILE_'
     }
 }
 

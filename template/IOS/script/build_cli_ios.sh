@@ -271,7 +271,7 @@ if [ -n "$DOTNET_BCL_REFERENCE" ] ; then
 fi 
 
 rm Game.dll
-csc  /target:exe /out:Game.dll  -lib:${URHO3D_DLL_PATH},${LOCAL_MONO_PATH},${LOCAL_MONO_PATH}/Facades /reference:UrhoDotNet.dll /reference:netstandard.dll ${DLL_REFERENCES} /platform:x64 ${C_SHARP_SOURCE_CODE}
+csc  /target:exe /out:Game.dll -define:_MOBILE_  -lib:${URHO3D_DLL_PATH},${LOCAL_MONO_PATH},${LOCAL_MONO_PATH}/Facades /reference:UrhoDotNet.dll /reference:netstandard.dll ${DLL_REFERENCES} /platform:x64 ${C_SHARP_SOURCE_CODE}
 if [ -f ./Game.dll ] ; then
     mkdir -p ${ASSETS_FOLDER_DOTNET_PATH}
     cp Game.dll ${ASSETS_FOLDER_DOTNET_PATH}
