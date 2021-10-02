@@ -63,6 +63,7 @@
 #define NONSCRIPTABLE 
 
 #define URHO3D_OPENGL
+#define URHO3D_DATABASE_SQLITE
 
 #ifdef __APPLE__
 #include "TargetConditionals.h"
