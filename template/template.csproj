@@ -130,6 +130,16 @@
     <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="@(AndroidAssetsDestinationDir)" SkipUnchangedFiles="true" />
   </Target>
 
+  <Target Name="CopyCustomContentWindowsPublish" AfterTargets="Publish" Condition="'$(IsWindows)'=='true'">
+    <PropertyGroup>
+      <libUrho3D>@(URHONET_HOME_ROOT)/template/libs/windows/Urho3D.dll</libUrho3D>
+    </PropertyGroup>  
+    <Error Condition="! Exists('$(libUrho3D)')" Text="Urho3D.dll not found are you sure URHONET_HOME_ROOT is pointing to the right place ?" /> 
+    <Copy SourceFiles="@(AssetsSourceFiles)" DestinationFolder="$(OutDir)\publish\%(RecursiveDir)" SkipUnchangedFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+    <Copy SourceFiles="$(libUrho3D)" DestinationFolder="$(OutDir)\publish" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="Assets/Data/DotNet" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="@(AndroidAssetsDestinationDir)" SkipUnchangedFiles="true" />
+  </Target>
 
   <Target Name="CopyCustomContentMacOS" AfterTargets="AfterBuild" Condition="'$(IsOSX)'=='true'">
     <PropertyGroup>
@@ -142,7 +152,17 @@
     <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="@(AndroidAssetsDestinationDir)" SkipUnchangedFiles="true" />
   </Target>
 
-
+  <Target Name="CopyCustomContentMacOSPublish" AfterTargets="Publish" Condition="'$(IsOSX)'=='true'">
+    <PropertyGroup>
+      <libUrho3D>@(URHONET_HOME_ROOT)/template/libs/macos/libUrho3D.dylib</libUrho3D>
+    </PropertyGroup>
+    <Error Condition="! Exists('$(libUrho3D)')" Text="libUrho3D.dylib not found are you sure URHONET_HOME_ROOT is pointing to the right place ?" /> 
+    <Copy SourceFiles="@(AssetsSourceFiles)" DestinationFolder="$(OutDir)\publish\%(RecursiveDir)" SkipUnchangedFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+    <Copy SourceFiles="$(libUrho3D)" DestinationFolder="$(OutDir)\publish" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="Assets/Data/DotNet" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="@(AndroidAssetsDestinationDir)" SkipUnchangedFiles="true" />
+  </Target>
+  
   <Target Name="CopyCustomContentLinux" AfterTargets="AfterBuild" Condition="'$(IsLinux)'=='true'">
     <PropertyGroup>
       <libUrho3D>@(URHONET_HOME_ROOT)/template/libs/linux/libUrho3D.so</libUrho3D>
@@ -150,6 +170,17 @@
     <Error Condition="! Exists('$(libUrho3D)')" Text="libUrho3D.so not found are you sure URHONET_HOME_ROOT is pointing to the right place ?" /> 
     <Copy SourceFiles="@(AssetsSourceFiles)" DestinationFolder="$(OutDir)\%(RecursiveDir)" SkipUnchangedFiles="true" Retries="3" RetryDelayMilliseconds="300" />
     <Copy SourceFiles="$(libUrho3D)" DestinationFolder="$(OutDir)" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="Assets/Data/DotNet" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="@(AndroidAssetsDestinationDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+  <Target Name="CopyCustomContentLinuxPublish" AfterTargets="Publish" Condition="'$(IsLinux)'=='true'">
+    <PropertyGroup>
+      <libUrho3D>@(URHONET_HOME_ROOT)/template/libs/linux/libUrho3D.so</libUrho3D>
+    </PropertyGroup>
+    <Error Condition="! Exists('$(libUrho3D)')" Text="libUrho3D.so not found are you sure URHONET_HOME_ROOT is pointing to the right place ?" /> 
+    <Copy SourceFiles="@(AssetsSourceFiles)" DestinationFolder="$(OutDir)\publish\%(RecursiveDir)" SkipUnchangedFiles="true" Retries="3" RetryDelayMilliseconds="300" />
+    <Copy SourceFiles="$(libUrho3D)" DestinationFolder="$(OutDir)\publish" SkipUnchangedFiles="true" />
     <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="Assets/Data/DotNet" SkipUnchangedFiles="true" />
     <Copy SourceFiles="$(OutDir)/Game.dll" DestinationFolder="@(AndroidAssetsDestinationDir)" SkipUnchangedFiles="true" />
   </Target>
