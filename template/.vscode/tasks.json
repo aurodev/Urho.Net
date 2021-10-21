@@ -158,22 +158,6 @@
             "problemMatcher": "$msCompile"
         },
         {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/${workspaceFolderBasename}.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
             "label": "publish-osx",
             "command": "dotnet",
             "type": "process",
@@ -182,8 +166,7 @@
                 "-c","Release",
                 "-r","osx-x64",
                 "--self-contained","true",
-                "/property:PublishReadyToRun=true",
-                "/property:PublishReadyToRunShowWarnings=true",
+                "/property:PublishFlavor=osx-x64",
                 "/property:PublishSingleFile=true",
                 "/property:PublishTrimmed=true",
                 "/property:DefineConstants=_DESKTOP_PUBLISHED_BINARY_",
@@ -206,8 +189,7 @@
                 "-c","Release",
                 "-r","win-x64",
                 "--self-contained","true",
-                "/property:PublishReadyToRun=true",
-                "/property:PublishReadyToRunShowWarnings=true",
+                "/property:PublishFlavor=win-x64",
                 "/property:PublishSingleFile=true",
                 "/property:PublishTrimmed=true",
                 "/property:DefineConstants=_DESKTOP_PUBLISHED_BINARY_",
@@ -230,8 +212,7 @@
                 "-c","Release",
                 "-r","linux-x64",
                 "--self-contained","true",
-                "/property:PublishReadyToRun=true",
-                "/property:PublishReadyToRunShowWarnings=true",
+                "/property:PublishFlavor=linux-x64",
                 "/property:PublishSingleFile=true",
                 "/property:PublishTrimmed=true",
                 "/property:DefineConstants=_DESKTOP_PUBLISHED_BINARY_",
