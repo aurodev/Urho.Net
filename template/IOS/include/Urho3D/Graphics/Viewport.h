@@ -107,6 +107,8 @@ public:
 
     /// Allocate the view structure. Called by Renderer.
     void AllocateView();
+    /// Set  Viewport clear color , will override the color set in the RenderPath (CLEAR_CMD) , setting  the value of Color(0,0,0,0) will reset it to the default clear color used in the RenderPath
+    void SetClearColor(const class Urho3D::Color& color);
 
 private:
     /// Scene pointer.
@@ -123,6 +125,10 @@ private:
     SharedPtr<View> view_;
     /// Debug draw flag.
     bool drawDebug_;
+    /// flag for overriding clear Color of commands of type CLEAR_CMD
+    bool overrideClearColor_{};
+    
+    Color clearColor_;
 };
 
 }
