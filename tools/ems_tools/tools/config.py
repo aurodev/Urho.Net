@@ -143,14 +143,14 @@ def parse_config_file():
       globals()[key] = config[key]
 
   # Certain keys are mandatory
-  for key in ('LLVM_ROOT', 'NODE_JS', 'BINARYEN_ROOT'):
-    if key not in config:
-      exit_with_error('%s is not defined in %s', key, config_file_location())
-    if not globals()[key]:
-      exit_with_error('%s is set to empty value in %s', key, config_file_location())
+  # for key in ('LLVM_ROOT', 'NODE_JS', 'BINARYEN_ROOT'):
+  #   if key not in config:
+  #     exit_with_error('%s is not defined in %s', key, config_file_location())
+  #   if not globals()[key]:
+  #     exit_with_error('%s is set to empty value in %s', key, config_file_location())
 
-  if not NODE_JS:
-    exit_with_error('NODE_JS is not defined in %s', config_file_location())
+  # if not NODE_JS:
+  #   exit_with_error('NODE_JS is not defined in %s', config_file_location())
 
   normalize_config_settings()
 
