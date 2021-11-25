@@ -64,6 +64,10 @@ if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "cygwin" ]]; then
     export PYTHON=${URHONET_HOME_ROOT}/tools/python/windows/python.exe
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     export PYTHON=${URHONET_HOME_ROOT}/tools/python/macos/bin/python3
+elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    export PYTHON=${URHONET_HOME_ROOT}/tools/python/linux/bin/python3
+elif [[ "$OSTYPE" == "freebsd"* ]]; then
+    export PYTHON=${URHONET_HOME_ROOT}/tools/python/linux/bin/python3
 fi 
 
     if [ ! -d Web ] ; then 
@@ -77,7 +81,11 @@ fi
 
     dotnet tools/ReferenceAssemblyResolver/ReferenceAssemblyResolver.dll --assembly Assets/Data/DotNet/Game.dll   --output Web/DotNet  --search ${URHONET_HOME_ROOT}/template/libs/dotnet/urho/web,${URHONET_HOME_ROOT}/template/libs/dotnet/bcl/wasm,${URHONET_HOME_ROOT}/template/libs/dotnet/bcl/wasm/Facades
 
-    ${PYTHON} ${URHONET_HOME_ROOT}/tools/ems_tools/tools/file_packager.py  Web/UrhoNetFileSystem.data  --preload "Assets@/"  --preload "Web/dotnet@/Data/DotNet/web"    --js-output=Web/UrhoNetFileSystemPreloader.js --use-preload-cache --lz4
-
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # TBD ELI Compression fails on linux 
+    ${PYTHON} ${URHONET_HOME_ROOT}/tools/ems_tools/tools/file_packager.py  Web/UrhoNetFileSystem.data  --preload "Assets@/"  --preload "Web/DotNet@/Data/DotNet/web"    --js-output=Web/UrhoNetFileSystemPreloader.js --use-preload-cache
+else
+    ${PYTHON} ${URHONET_HOME_ROOT}/tools/ems_tools/tools/file_packager.py  Web/UrhoNetFileSystem.data  --preload "Assets@/"  --preload "Web/DotNet@/Data/DotNet/web"    --js-output=Web/UrhoNetFileSystemPreloader.js --use-preload-cache --lz4
+fi
     rm -rf Web/DotNet
 fi
