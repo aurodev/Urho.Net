@@ -41,6 +41,16 @@ First class Visual Studio Code support as the main IDE on all 3 major platforms 
   - https://youtu.be/6YZC6N9cIGk
 - Android development
   - https://youtu.be/ElMs_jkcLxo
+- Web development
+  - Building for Web is done via Visual Studio Code editor
+  - To build the application for web deployment 
+    - Press Ctrl+P 
+    - Choose Tasks: Run Task
+    - Choose web-build
+    - The build will generate Web folder in the project directory
+    - The Web folder contains everything that is needed for web deployment.
+    - You can test it on your local browser with the [Live Server extention](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+  - Web support is still in the development phase , you may submit any issues found with a detailed description of the issue and  Browser Console logs.
 
 # Samples 
 https://github.com/Urho-Net/Samples
