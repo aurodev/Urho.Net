@@ -258,9 +258,10 @@ namespace TEMPLATE_PROJECT_NAME
 		{
 			switch (e.Key)
 			{
-				case Key.Esc:
-					Exit();
-					return;
+                case Key.Esc:
+                    if (Application.Platform != Platforms.Web)
+                        Exit();
+                    return;
 				case Key.F1:
 					console.Toggle();
 					return;
