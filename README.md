@@ -1,6 +1,6 @@
 # Urho.Net
 Multi-Platform C# Game development framework based upon the Urho3D game engine .\
-Currently supports :  Windows , Linux , OSX , iOS and Android . 
+Currently supports :  Windows , Linux , OSX , iOS , Android and Web browsers . 
 
 First class Visual Studio Code support as the main IDE on all 3 major platforms , Windows , MacOS and Linux .
 ### Check the Wiki for quick start
@@ -28,6 +28,11 @@ First class Visual Studio Code support as the main IDE on all 3 major platforms 
 
 # <u> Android Dependencies </u>
 - Android SDK https://developer.android.com/studio
+
+# <u> Web Dependencies </u>
+- Just a working browser
+- Browser working live samples can be found in [Urho.Net Feature Samples on Web](https://elix22.itch.io/urhonet-feature-samples)
+- Please note that Urho.Network is not supported on Web browsers and will cause unpredictable behavior of the application.
 
 # <u> Getting Started </u>
 - General (updated on 31/01/2021)
