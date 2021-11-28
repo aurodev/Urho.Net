@@ -44,7 +44,7 @@ First class Visual Studio Code support as the main IDE on all 3 major platforms 
 - Web development
   - Building for Web is done via Visual Studio Code editor
   - To build the application for web deployment 
-    - Press Ctrl+P 
+    - Press Ctrl+Shift+P (Cmd+Shift+P on Mac)
     - Choose Tasks: Run Task
     - Choose web-build
     - The build will generate Web folder in the project directory
