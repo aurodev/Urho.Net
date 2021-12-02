@@ -24,6 +24,8 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Collections.Generic;
+using System.Linq;
 using Urho.Resources;
 using Urho.Gui;
 using Urho;
@@ -81,6 +83,31 @@ namespace TEMPLATE_PROJECT_NAME
 		/// </summary>
 		protected virtual string JoystickLayoutPatch => string.Empty;
 
+        public static bool IsMobile
+        {
+            get
+            {
+
+                if (Application.Platform == Platforms.iOS || Application.Platform == Platforms.Android)
+                    return true;
+
+                if (Application.Platform == Platforms.Web)
+                {
+                    string UserAgent = Environment.GetEnvironmentVariable("UserAgent");
+                    if (UserAgent != null)
+                    {
+                        var mobileStrings = new List<string> { "Android", "iPhone", "iPad", "Mobile", "webOS", "iPod", "BlackBerry", "Windows Phone" };
+                        if (mobileStrings.Any(x => UserAgent.Contains(x, StringComparison.CurrentCultureIgnoreCase)))
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
+            }
+        }
+
 		protected override void Start ()
 		{
 			if (Platform != Platforms.Android)
@@ -90,8 +117,7 @@ namespace TEMPLATE_PROJECT_NAME
             }
 			
 			base.Start();
-			if (Platform == Platforms.Android || 
-				Platform == Platforms.iOS || 
+			if (IsMobile ||
 				Options.TouchEmulation)
 			{
 				InitTouchInput();
@@ -325,7 +351,7 @@ namespace TEMPLATE_PROJECT_NAME
 
 
                 case Key.N9:
-                    if (Platform != Platforms.Android && Platform != Platforms.iOS)
+                    if (!IsMobile)
                     {
                         Image screenshot = new Image();
                         Graphics.TakeScreenShot(screenshot);
