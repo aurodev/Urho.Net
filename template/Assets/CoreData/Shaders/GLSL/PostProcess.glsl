@@ -12,9 +12,10 @@ vec2 Noise(vec2 coord)
 vec4 GaussianBlur(int blurKernelSize, vec2 blurDir, vec2 blurRadius, float sigma, sampler2D texSampler, vec2 texCoord)
 {
 #if defined(WEBGL)
-    const int blurKernelSizeHalfSize = 2;
+    // assign the max possible value
+    const int blurKernelSizeHalfSize = 9/2;
 #else
-    int blurKernelSizeHalfSize = blurKernelSize / 2;
+    int blurKernelSizeHalfSize =  blurKernelSize / 2;
 #endif
     
 
@@ -39,6 +40,12 @@ vec4 GaussianBlur(int blurKernelSize, vec2 blurDir, vec2 blurRadius, float sigma
 
         gaussCoeffSum += 2.0 * gaussCoeff.x;
         gaussCoeff.xy *= gaussCoeff.yz;
+#if defined(WEBGL)
+        if(blurKernelSize == 3 && i == 1)break;
+        else  if(blurKernelSize == 5 && i == 2)break;
+        else  if(blurKernelSize == 7 && i == 3)break;
+        else  if(blurKernelSize == 9 && i == 4)break;
+#endif
     }
 
     return avgValue / gaussCoeffSum;
