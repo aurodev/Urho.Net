@@ -1491,6 +1491,179 @@
              
              </summary>
             </member>
+        <member name="T:Urho.Context">
+             <summary>
+             Urho3D execution context. Provides access to subsystems, object factories and attributes, and event receivers.
+             </summary>
+             <summary>
+             Urho3D execution context. Provides access to subsystems, object factories and attributes, and event receivers.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.CreateObject(Urho.StringHash)">
+             <summary>
+             Create an object by type hash. Return pointer to it or null if no factory found.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.RegisterFactory(Urho.ObjectFactory)">
+             <summary>
+             Register a factory for an object type.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.RegisterSubsystem(Urho.UrhoObject)">
+             <summary>
+             Register a subsystem.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.RemoveSubsystem(Urho.StringHash)">
+             <summary>
+             Remove a subsystem.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.RemoveAllAttributes(Urho.StringHash)">
+             <summary>
+             Remove all object attributes.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.RequireSDL(System.UInt32)">
+             <summary>
+             Initialises the specified SDL systems, if not already. Returns true if successful. This call must be matched with ReleaseSDL() when SDL functions are no longer required, even if this call fails.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.ReleaseSDL">
+             <summary>
+             Indicate that you are done with using SDL. Must be called after using RequireSDL().
+             </summary>
+            </member>
+        <member name="M:Urho.Context.CopyBaseAttributes(Urho.StringHash,Urho.StringHash)">
+             <summary>
+             Copy base class attributes to derived class.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.GetSubsystem(Urho.StringHash)">
+             <summary>
+             Return subsystem by type.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Vector3)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.IntRect)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Color)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Vector2)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Vector4)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.IntVector2)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Quaternion)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Matrix4)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Matrix3)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Matrix3x4)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,System.Int32)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,System.Single)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,System.String)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,System.Boolean)">
+             <summary>
+             Set global variable with the respective key and value.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.GetEventSender">
+             <summary>
+             Return active event sender. Null outside event handling.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.GetEventHandler">
+             <summary>
+             Return active event handler. Set by Object. Null outside event handling.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.GetTypeName(Urho.StringHash)">
+             <summary>
+             Return object type name from hash, or empty if unknown.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.GetEventReceivers(Urho.UrhoObject,Urho.StringHash)">
+             <summary>
+             Return event receivers for a sender and event type, or null if they do not exist.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.GetEventReceivers(Urho.StringHash)">
+             <summary>
+             Return event receivers for an event type, or null if they do not exist.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.RegisterPlugin(Urho.Plugin)">
+             <summary>
+             Register a subsystem.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.RemovePlugin(Urho.StringHash)">
+             <summary>
+             Remove a subsystem.
+             </summary>
+            </member>
+        <member name="M:Urho.Context.GetPlugin(Urho.StringHash)">
+             <summary>
+             Return subsystem by type.
+             </summary>
+            </member>
+        <member name="P:Urho.Context.EventSender">
+             <summary>
+             Return active event sender. Null outside event handling.
+             </summary>
+            </member>
+        <member name="P:Urho.Context.EventHandler">
+             <summary>
+             Return active event handler. Set by Object. Null outside event handling.
+             </summary>
+            </member>
         <member name="T:Urho.CoreAssets.Models.LinePrimitives">
              <summary>
              Line primitives. Could be very useful models for debug, user interface etc.
@@ -11285,6 +11458,12 @@
              
              </summary>
             </member>
+        <member name="M:Urho.Gui.UIElement.SetDragDropMode(Urho.DragAndDropMode)">
+             <summary>
+             Set drag and drop flags.
+             
+             </summary>
+            </member>
         <member name="M:Urho.Gui.UIElement.SetStyle(System.String,Urho.Resources.XmlFile)">
              <summary>
              Set style from an XML file. Find the style element by name. If the style file is not explicitly provided, use the default style from parental chain. Return true if the style is applied successfully. See also
@@ -11777,6 +11956,12 @@
              
              </summary>
             </member>
+        <member name="M:Urho.Gui.UIElement.GetDragDropMode">
+             <summary>
+             Return drag and drop flags.
+             
+             </summary>
+            </member>
         <member name="M:Urho.Gui.UIElement.GetAppliedStyle">
              <summary>
              Return applied style name. Return an empty string when the applied style is an 'auto' style (i.e. style derived from instance's type).
@@ -11849,6 +12034,11 @@
         <member name="M:Urho.Gui.UIElement.GetDerivedColor">
              <summary>
              Return derived color. Only valid when no gradient.
+             </summary>
+            </member>
+        <member name="M:Urho.Gui.UIElement.GetVar(Urho.StringHash)">
+             <summary>
+             Return a user variable.
              </summary>
             </member>
         <member name="M:Urho.Gui.UIElement.HasTag(System.String)">
@@ -12244,6 +12434,15 @@
              
              Or
              Set focus mode.
+             
+             </summary>
+            </member>
+        <member name="P:Urho.Gui.UIElement.DragDropMode">
+             <summary>
+             Return drag and drop flags.
+             
+             Or
+             Set drag and drop flags.
              
              </summary>
             </member>
@@ -21787,6 +21986,16 @@
              Mix sound sources into the buffer.
              </summary>
             </member>
+        <member name="M:Urho.Audio.Audio.RefreshMode">
+             <summary>
+             Re-initialize sound output with same parameters.
+             </summary>
+            </member>
+        <member name="M:Urho.Audio.Audio.Close">
+             <summary>
+             Close Audio device.
+             </summary>
+            </member>
         <member name="P:Urho.Audio.Audio.Listener">
              <summary>
              Return active sound listener.
@@ -24790,176 +24999,6 @@
              Or
              Set damping ratio.
              
-             </summary>
-            </member>
-        <member name="T:Urho.Context">
-             <summary>
-             Urho3D execution context. Provides access to subsystems, object factories and attributes, and event receivers.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.CreateObject(Urho.StringHash)">
-             <summary>
-             Create an object by type hash. Return pointer to it or null if no factory found.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.RegisterFactory(Urho.ObjectFactory)">
-             <summary>
-             Register a factory for an object type.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.RegisterSubsystem(Urho.UrhoObject)">
-             <summary>
-             Register a subsystem.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.RemoveSubsystem(Urho.StringHash)">
-             <summary>
-             Remove a subsystem.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.RemoveAllAttributes(Urho.StringHash)">
-             <summary>
-             Remove all object attributes.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.RequireSDL(System.UInt32)">
-             <summary>
-             Initialises the specified SDL systems, if not already. Returns true if successful. This call must be matched with ReleaseSDL() when SDL functions are no longer required, even if this call fails.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.ReleaseSDL">
-             <summary>
-             Indicate that you are done with using SDL. Must be called after using RequireSDL().
-             </summary>
-            </member>
-        <member name="M:Urho.Context.CopyBaseAttributes(Urho.StringHash,Urho.StringHash)">
-             <summary>
-             Copy base class attributes to derived class.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.GetSubsystem(Urho.StringHash)">
-             <summary>
-             Return subsystem by type.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Vector3)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.IntRect)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Color)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Vector2)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Vector4)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.IntVector2)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Quaternion)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Matrix4)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Matrix3)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,Urho.Matrix3x4)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,System.Int32)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,System.Single)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,System.String)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.SetGlobalVar(Urho.StringHash,System.Boolean)">
-             <summary>
-             Set global variable with the respective key and value.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.GetEventSender">
-             <summary>
-             Return active event sender. Null outside event handling.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.GetEventHandler">
-             <summary>
-             Return active event handler. Set by Object. Null outside event handling.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.GetTypeName(Urho.StringHash)">
-             <summary>
-             Return object type name from hash, or empty if unknown.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.GetEventReceivers(Urho.UrhoObject,Urho.StringHash)">
-             <summary>
-             Return event receivers for a sender and event type, or null if they do not exist.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.GetEventReceivers(Urho.StringHash)">
-             <summary>
-             Return event receivers for an event type, or null if they do not exist.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.RegisterPlugin(Urho.Plugin)">
-             <summary>
-             Register a subsystem.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.RemovePlugin(Urho.StringHash)">
-             <summary>
-             Remove a subsystem.
-             </summary>
-            </member>
-        <member name="M:Urho.Context.GetPlugin(Urho.StringHash)">
-             <summary>
-             Return subsystem by type.
-             </summary>
-            </member>
-        <member name="P:Urho.Context.EventSender">
-             <summary>
-             Return active event sender. Null outside event handling.
-             </summary>
-            </member>
-        <member name="P:Urho.Context.EventHandler">
-             <summary>
-             Return active event handler. Set by Object. Null outside event handling.
              </summary>
             </member>
         <member name="T:Urho.ConvexData">
@@ -28461,6 +28500,11 @@
         <member name="T:Urho.HeightfieldData">
              <summary>
              Heightfield geometry data.
+             </summary>
+            </member>
+        <member name="T:Urho.HierarchyContainer">
+             <summary>
+             Hierarchy container (used by ListView internally when in hierarchy mode).
              </summary>
             </member>
         <member name="T:Urho.Gui.HighlightMode">
