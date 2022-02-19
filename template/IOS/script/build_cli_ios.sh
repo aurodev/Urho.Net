@@ -390,7 +390,7 @@ xcodebuild -project ${BUILD_DIR}/${APP_NAME}.xcodeproj
 
 
 if [[ "$DEPLOY" == "launch" ]]; then
-    ios-deploy --justlaunch --bundle  ${BUILD_DIR}/bin/${APP_NAME}.app
+    ios-deploy --justlaunch --debug --bundle  ${BUILD_DIR}/bin/${APP_NAME}.app
 fi
 
 if [[ "$DEPLOY" == "debug" ]]; then
