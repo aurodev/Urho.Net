@@ -211,7 +211,15 @@ public:
     unsigned GetMorphRangeStart(unsigned bufferIndex) const;
     /// Return vertex buffer morph range vertex count.
     unsigned GetMorphRangeCount(unsigned bufferIndex) const;
-
+    /// Add vertex buffer and its morph ranges.
+    bool AddVertexBuffer(VertexBuffer * buffer , unsigned morphRangeStarts ,unsigned morphRangeCounts);
+    /// Add index buffer .
+    bool AddIndexBuffer(IndexBuffer * buffer);
+    
+    /// clear all bone mappings
+    void ClearGeometryBoneMappings();
+    /// Add bone mapping.
+    void AddGeometryBoneMapping(const unsigned *  geometryBoneMapping , unsigned size);
 private:
     /// Bounding box.
     BoundingBox boundingBox_;
