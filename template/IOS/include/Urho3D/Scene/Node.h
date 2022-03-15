@@ -89,6 +89,10 @@ public:
 
     /// Load from binary data. Return true if successful.
     bool Load(Deserializer& source) override;
+    /// Load from an XML file. Return true if successful.
+    bool LoadXML(Deserializer& source);
+    /// Load from a JSON file. Return true if successful.
+    bool LoadJSON(Deserializer& source);
     /// Load from XML data. Return true if successful.
     bool LoadXML(const XMLElement& source) override;
     /// Load from JSON data. Return true if successful.
@@ -344,6 +348,8 @@ public:
     void SetParent(Node* parent);
     /// Set a user variable.
     void SetVar(StringHash key, const Variant& value);
+    /// Set a user variable.
+    void SetVar(const String&  key, const Variant& value);
     /// Add listener component that is notified of node being dirtied. Can either be in the same node or another.
     void AddListener(Component* component);
     /// Remove listener component.
@@ -605,6 +611,8 @@ public:
 
     /// Return a user variable.
     const Variant& GetVar(StringHash key) const;
+    /// Return a user variable.
+    Variant GetVar(const String&  key) const;
 
     /// Return all user variables.
     const VariantMap& GetVars() const { return vars_; }
