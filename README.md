@@ -1,3 +1,6 @@
+# Ongoing .NET 6 development on [dotnet-6.x](https://github.com/Urho-Net/Urho.Net/tree/dotnet-6.x)
+  The link to the matching .NET 6 samples , [dotnet-6.x](https://github.com/Urho-Net/Samples/tree/dotnet-6.x)
+
 # Urho.Net
 Multi-Platform C# Game development framework based upon the Urho3D game engine .\
 Currently supports :  Windows , Linux , OSX , iOS , Android and Web browsers . 
